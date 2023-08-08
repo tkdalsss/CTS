@@ -13,6 +13,7 @@ def topology_sort():
     result = []
     q = deque()
 
+    # 처음 시작할 때는 진입차수가 0인거 부터 시작
     for i in range(1, v+1):
         if indegree[i] == 0:
             q.append(i)
