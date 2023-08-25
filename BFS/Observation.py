@@ -5,6 +5,7 @@ board = []
 teachers = []
 spaces = []
 
+# S = student, T = teacher, O = obstacle
 for i in range(n):
     board.append(list(input().split()))
     for j in range(n):
@@ -14,6 +15,7 @@ for i in range(n):
             spaces.append((i, j))
 
 def watch(x, y, direction):
+    # 각각의 방향마다 Studnet or Obstacle이 발견될때까지 탐색
     if direction == 0: # left
         while y >= 0:
             if board[x][y] == 'S':

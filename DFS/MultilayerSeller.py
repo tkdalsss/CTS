@@ -19,12 +19,15 @@ def solution(enroll, referral, seller, amount):
         d[enroll[i]] = i + 1
     
     for i in range(n):
+        # 추천인이 - 인경우 추천인이 없음을 뜻함
+        # 추천인이 있을 경우 추천인의 인덱스를 리스트에 저장
         if referral[i] == '-':
             parents[i+1] = 0
         else:
             parents[i+1] = d[referral[i]]
     
     for i in range(len(seller)):
+        # amount는 갯수만 저장되어있는 리스트이므로 한개당 가격이 100원
         find(parents, amount[i] * 100, d[seller[i]], answer)
     
     return answer[1:] # 제일 처음에는 루트노드 민호가 포함되어 있기 때문에 잘라야함

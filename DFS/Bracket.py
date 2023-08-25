@@ -1,3 +1,4 @@
+# 프로그래머스 올바른 괄호 배열? - 카카오
 def balanced_index(p):
     count = 0
     for i in range(len(p)):

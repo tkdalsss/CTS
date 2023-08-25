@@ -6,12 +6,14 @@ def possible(number):
         return True
     
     mid = length // 2
-    if number[mid] == '0':
+    if number[mid] == '0': 
+        # 이진 트리를 만들 수 없으므로 False return
         return False
     
     return possible(number[:mid]) and possible(number[mid+1:])
 
 def solution(numbers):
+    # 2진수로 변환하면 0bxxx의 형태로 나오기 때문에 '0b'를 제거하고 리스트에 저장
     bin_numbers = [bin(number)[2:] for number in numbers]
     bin_list = [2**x - 1 for x in range(50)]
     answer = []

@@ -1,10 +1,3 @@
-map = [
-    [0,0,1,1,0],
-    [0,0,0,1,1],
-    [1,1,1,1,1],
-    [0,0,0,0,0]
-]
-
 def solution(map, n, m):
     
     result = 0
@@ -34,4 +27,10 @@ def solution(map, n, m):
 
     return result
 
+map = [
+    [0,0,1,1,0],
+    [0,0,0,1,1],
+    [1,1,1,1,1],
+    [0,0,0,0,0]
+]
 print(solution(map, 4, 5))

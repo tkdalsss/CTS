@@ -25,6 +25,7 @@ def get_score():
     score = 0
     for i in range(n):
         for j in range(m):
+            # 0이라면 감염되지 않은 공간이므로 score 증가
             if temp[i][j] == 0:
                 score += 1
     return score
@@ -38,11 +39,12 @@ def dfs(count):
         for i in range(n):
             for j in range(m):
                 if temp[i][j] == 2:
+                    # 바이러스 감염
                     virus(i, j)
         result = max(result, get_score())
         return
-    # 감영되지 않는 공간 채우기
-    # 벽을 채울 수 있는 모든 경우의 수 체크
+    # 빈 공간들 중에서 벽(1)으로 채운다
+    # 벽은 3개까지만(count==3) 채울 수 있음
     for i in range(n):
         for j in range(m):
             if data[i][j] == 0:

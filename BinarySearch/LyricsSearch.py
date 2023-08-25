@@ -11,8 +11,12 @@ reversed_arr = [[] for _ in range(10001)]
 
 def solution(words, queries):
     answer = []
+
+    # 글자수별 단어 리스트 저장
     for word in words:
+        # 접미사에 와일드카드기 있는 경우를 위한 리스트
         arr[len(word)].append(word)
+        # 접두사에 와일드카드가 있는 경우를 위한 리스트
         reversed_arr[len(word)].append(word[::-1])
     
     for i in range(10001):
