@@ -1,3 +1,4 @@
+# 국어점수는 내림차순, 영어는 오름차순, 수학은 내림차순 정렬 -> 한번에
 import sys
 input = sys.stdin.readline
 
