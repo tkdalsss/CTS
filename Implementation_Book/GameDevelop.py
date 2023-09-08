@@ -21,20 +21,19 @@ def turn_left():
         direction = 3
 
 count = 1
-turn_time = 0
+turn_time = 0 # 네방향 모두 갈 수 없는 경우를 위한 cnt
 
 while True:
-    turn_left()
+    turn_left() # 왼쪽으로 방향 돌리기
     nx = x + dx[direction]
     ny = y + dy[direction]
 
     # 방문하지 않았거나 육지인 경우 이동
     if d[nx][ny] == 0 and array[nx][ny] == 0:
         d[nx][ny] = 1 # visit check
-        x = nx 
-        y = ny
+        x, y = nx, ny
         count += 1
-        turn_time = 0
+        turn_time = 0 # initialization
         continue
     else:
         turn_time += 1
