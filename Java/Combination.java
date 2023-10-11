@@ -29,7 +29,7 @@ class Combination {
       result.add(temp);
       return;
     }
-    if (depth == n)
+    if (target == n)
       return;
     now[index] = target;
     combination(arr, depth + 1, index + 1, target + 1);
