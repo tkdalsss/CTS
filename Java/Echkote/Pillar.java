@@ -1,6 +1,8 @@
-package CTS.Java;
+package CTS.Java.Echkote;
 
 import java.util.*;
+
+// import CTS.Java.Node;
 
 class Node implements Comparable<Node> {
   private int x;

@@ -1,4 +1,4 @@
-package CTS.Java;
+package CTS.Java.Echkote;
 
 public class StringCompress {
   public int solution(String s) {
@@ -33,7 +33,6 @@ public class StringCompress {
           prev = sub;
           cnt = 1;
         }
-
       }
       // 남아있는 문자열에 대해서 처리
       compressed += (cnt >= 2) ? cnt + prev : prev;

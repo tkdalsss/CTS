@@ -1,4 +1,4 @@
-package CTS.Java;
+package CTS.Java.Echkote;
 
 import java.util.*;
 
