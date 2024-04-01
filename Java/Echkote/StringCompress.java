@@ -1,4 +1,3 @@
-package CTS.Java.Echkote;
 
 public class StringCompress {
   public int solution(String s) {

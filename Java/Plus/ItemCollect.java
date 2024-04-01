@@ -14,6 +14,7 @@ public class ItemCollect {
       Arrays.fill(visited[i], 1); // visited 초기화
     }
 
+    // 여러 사각형들을 가지고 하나씩 테두리 그리기
     for (int[] rect : rectangle) {
       int x1 = rect[0] * 2;
       int y1 = rect[1] * 2;
@@ -53,6 +54,7 @@ public class ItemCollect {
         int nx = x + dx[i];
         int ny = y + dy[i];
 
+        // visited = 1이 처음 방문한 곳
         if (field[nx][ny] == 1 && visited[nx][ny] == 1) {
           visited[nx][ny] = visited[x][y] + 1;
           q.offer(new int[] { nx, ny });

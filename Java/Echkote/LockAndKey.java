@@ -1,4 +1,3 @@
-package CTS.Java.Echkote;
 
 public class LockAndKey {
   public static int[][] rotateMatrixBy90Degree(int[][] a) {

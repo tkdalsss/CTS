@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class TernaryScale {
   public int solution(int n) {

@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class MatrixMultiple {
   public int[][] solution(int[][] arr1, int[][] arr2) {

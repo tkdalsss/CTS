@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class QuadCompress {
   private static class Count {

@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class NumberReverseArr {
   public int[] solution(long n) {

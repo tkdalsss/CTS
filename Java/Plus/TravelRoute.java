@@ -10,8 +10,8 @@ public class TravelRoute {
     String[] answer = {};
 
     int cnt = 0;
-    visited = new boolean[tickets.length];
-    allRoute = new ArrayList<>();
+    visited = new boolean[tickets.length]; // 목적지 만큼 갯수
+    allRoute = new ArrayList<>(); // route들 저장
 
     dfs("ICN", "ICN", tickets, cnt);
 

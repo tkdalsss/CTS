@@ -1,4 +1,3 @@
-package CTS.Java.Echkote;
 
 import java.util.*;
 
@@ -20,9 +19,9 @@ class Combination {
   }
 
   public void combination(ArrayList<Position> arr, int depth, int index, int target) {
-    if (depth == r) {
+    if (depth == r) { // r -> 몇개 뽑을 것인지
       ArrayList<Position> temp = new ArrayList<>();
-      for (int i = 0; i < now.length; i++) {
+      for (int i = 0; i < now.length; i++) { // now.length -> r
         temp.add(arr.get(now[i]));
       }
       result.add(temp);

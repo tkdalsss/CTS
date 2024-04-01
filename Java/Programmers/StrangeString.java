@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class StrangeString {
   public String solution(String s) {

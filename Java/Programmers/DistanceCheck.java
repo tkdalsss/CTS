@@ -1,4 +1,3 @@
-package CTS.Java.Programmers;
 
 public class DistanceCheck {
   private static final int dx[] = { 0, -1, 1, 0 };
