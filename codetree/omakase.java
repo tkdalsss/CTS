@@ -8,6 +8,11 @@ public class Omakase {
     static int q;
 
     public static void main(String[] args) {
+        // 여기에 코드를 작성해주세요.
+        // 모든 행동은 시각 t에 초밥회전 직후 발생
+        // 100 초밥 -> x에 name의 초밥
+        // 200 손님 -> x에 앉아서 자신의 초밥 n개 -> 먹는데에는 시간 소요 x
+        // 300 촬영 -> 회전, 초밥 먹고 사진 촬영 -> 사람 수와 초밥 수 출력
         Scanner sc = new Scanner(System.in);
 
         l = sc.nextInt(); // 벨트 길이
@@ -16,10 +21,12 @@ public class Omakase {
 
         for (int i = 0; i < l; i++) {
             sushiMap.put(i, new ArrayList<>());
+            // personMap.put(i, new HashMap<>());
         }
 
         int cnt = 1;
         for (int i = 0; i < q; i++) {
+            // 300마다 출력
             String s = sc.nextLine();
             String[] tmp = s.split(" ");
             String code = tmp[0];
@@ -27,7 +34,7 @@ public class Omakase {
 
             switch (code) {
                 case "100":
-                    addSushi(i, t, Integer.parseInt(tmp[2]), tmp[3]);
+                    addSushi(i, Integer.parseInt(tmp[2]), tmp[3]);
                     break;
                 case "200":
                     eatSushi(i, Integer.parseInt(tmp[2]), tmp[3], Integer.parseInt(tmp[4]));
@@ -43,36 +50,39 @@ public class Omakase {
                 cnt = t + 1;
             else
                 cnt++;
+            // System.out.println(t + " " + cnt);
         }
     }
 
-    private static void addSushi(int m, int t, int x, String name) {
+    private static void addSushi(int m, int x, String name) {
         loop(m);
-        List<String> strings = sushiMap.get(x);
-        strings.add(name);
-        sushiMap.put(x, strings);
+        sushiMap.computeIfAbsent(x, k -> new ArrayList<>()).add(name);
         if (!personMap.isEmpty() && m < q)
             current();
     }
 
     private static void eatSushi(int m, int x, String name, int n) {
+        // 초밥의 수와 사람 숫자 체크해서 초밥 삭제
+        // 먹을 초밥 없으면 personMap 추가
         loop(m);
         int tmp = n;
         List<String> strings = sushiMap.get(x);
-        for (String s : strings) {
+
+        Iterator<String> it = strings.iterator();
+        while (it.hasNext()) {
+            String s = it.next();
             if (s.equals(name)) {
+                it.remove();
                 tmp -= 1;
             }
         }
-        for (int i = 0; i < n - tmp; i++) {
-            strings.remove(name);
-        }
+
         sushiMap.put(x, strings);
+
         if (tmp > 0) {
-            Map<String, Integer> map = new HashMap<>();
-            map.put(name, tmp);
-            personMap.put(x, map);
+            addToPersonMap(x, name, tmp);
         }
+
         if (!personMap.isEmpty() && m < q)
             current();
     }
@@ -117,28 +127,35 @@ public class Omakase {
                     personName = k;
                 }
                 Integer i1 = personMap.get(i).get(personName); // 먹어야할 스시 개수
+
                 int cnt = 0;
+
                 // 현재 스시가 있는지 확인
                 List<String> strings = sushiMap.get(i);
-                for (String s : strings) {
+
+                Iterator<String> it = strings.iterator();
+                while (it.hasNext()) {
+                    String s = it.next();
                     if (s.equals(personName)) {
+                        it.remove();
                         i1 -= 1;
                         cnt++;
                     }
                 }
-                for (int j = 0; j < cnt; j++) {
-                    strings.remove(personName);
-                }
                 sushiMap.put(i, strings);
                 if (i1 > 0) {
-                    Map<String, Integer> map = new HashMap<>();
-                    map.put(personName, i1);
-                    personMap.put(i, map);
+                    addToPersonMap(i, personName, i1);
                 } else {
                     personMap.remove(i);
                 }
             }
         }
+    }
+
+    private static void addToPersonMap(int parentKey, String childKey, int value) {
+        Map<String, Integer> map = new HashMap<>();
+        map.put(childKey, value);
+        personMap.put(parentKey, map);
     }
 
 }
