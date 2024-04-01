@@ -8,11 +8,6 @@ public class Omakase {
     static int q;
 
     public static void main(String[] args) {
-        // 여기에 코드를 작성해주세요.
-        // 모든 행동은 시각 t에 초밥회전 직후 발생
-        // 100 초밥 -> x에 name의 초밥
-        // 200 손님 -> x에 앉아서 자신의 초밥 n개 -> 먹는데에는 시간 소요 x
-        // 300 촬영 -> 회전, 초밥 먹고 사진 촬영 -> 사람 수와 초밥 수 출력
         Scanner sc = new Scanner(System.in);
 
         l = sc.nextInt(); // 벨트 길이
@@ -21,7 +16,6 @@ public class Omakase {
 
         for (int i = 0; i < l; i++) {
             sushiMap.put(i, new ArrayList<>());
-            // personMap.put(i, new HashMap<>());
         }
 
         int cnt = 1;
@@ -62,8 +56,6 @@ public class Omakase {
     }
 
     private static void eatSushi(int m, int x, String name, int n) {
-        // 초밥의 수와 사람 숫자 체크해서 초밥 삭제
-        // 먹을 초밥 없으면 personMap 추가
         loop(m);
         int tmp = n;
         List<String> strings = sushiMap.get(x);
