@@ -2,70 +2,66 @@ package CTS.Java.Plus;
 
 import java.util.*;
 
-public class WordTranslate {
+class WordTranslate {
+    
+    public static boolean[] visited;
+    public static int[] dis ;
+    public static int answer = 0;
 
-  static boolean[] visited;
-
-  static class Word {
-    String word;
-    int idx;
-
-    public Word(String word, int idx) {
-      this.word = word;
-      this.idx = idx;
-    }
-
-    public String getWord() {
-      return this.word;
-    }
-
-    public int getIdx() {
-      return this.idx;
-    }
-  }
-
-  public int solution(String begin, String target, String[] words) {
-    int answer = 0;
-    List<String> strList = new ArrayList<>(Arrays.asList(words));
-
-    visited = new boolean[words.length];
-
-    if (!strList.contains(target))
-      return 0;
-
-    Queue<Word> q = new LinkedList<>();
-    q.offer(new Word(begin, 0));
-
-    // 수정해야 함
-    while (!q.isEmpty()) {
-      Word tmp = q.poll();
-      String word = tmp.getWord();
-      int idx = tmp.getIdx();
-
-      if (word == target) {
-        answer = idx;
-        break;
-      }
-
-      int tmp_idx;
-      for (int i = 0; i < words.length; i++) {
-        tmp_idx = 0;
-
-        if (visited[i])
-          continue;
-
-        for (int j = 0; j < word.length(); j++) {
-          if (word.charAt(j) != words[i].charAt(j))
-            tmp_idx++;
-        }
-
-        if (tmp_idx == 1) {
-          visited[i] = true;
-          q.offer(new Word(words[i], idx + 1));
-        }
+    static class Word {
+      String str;
+      int idx;
+      
+      public Word (String str, int idx) {
+          this.str = str;
+          this.idx = idx;
       }
     }
-
-    return answer;
-  }
+  
+    public int solution(String begin, String target, String[] words) {
+    
+        visited = new boolean[words.length];
+        dis = new int[words.length+1];
+        
+        if(Arrays.asList(words).contains(target)){
+            bfs(begin, target, words);
+            return answer;   
+        } else {
+            return 0;
+        }
+        
+    }
+    
+    static void bfs(String begin, String target, String[] words) {
+        Queue<Word> queue = new LinkedList<>();
+        queue.add(new Word(begin, 0)); //단어와 idx를 함께 나타낸다.
+        
+        while(!queue.isEmpty()) {
+            Word output = queue.poll();
+            
+            if(output.str.equals(target)) 
+                return ;
+            
+             for(int i=0; i< words.length; i++) {
+                int cnt = 0;
+                String next = words[i];
+                 
+                if(visited[i]) continue;
+                else {
+                    for(int j=0; j<output.str.length(); j++) {
+                        if(next.charAt(j) == output.str.charAt(j)){
+                            cnt++;
+                        } 
+                    }
+                    
+                    if(cnt == output.str.length()-1) {
+                        visited[i] = true;
+                        queue.add(new Word(words[i], i+1)); //단어와 idx를 함께 나타낸다.
+                        dis[i+1] = dis[output.idx] + 1; //이것을 위해 StringANDIdx 의 형태로 단어와 idx를 함께 queue에 저장해두었다.
+                        answer = dis[i+1];
+                    }
+                }
+            }
+        }
+    }
 }
