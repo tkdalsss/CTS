@@ -36,37 +36,14 @@ class Solution {
         
         list.add(bfs(sp));
         
-        // list.add(distance[endx][endy]);
         for (int i = 0; i < visited.length; i++) {
             for (int j = 0; j < visited[0].length; j++) {
                 if (!visited[i][j] && distance[i][j] > 0) {
-                    // visited[i][j] = true;
                     list.add(bfs(new int[]{i, j}));
                 }
             }
         }
-        // int[] result = bfs(sp);
         
-//         for (int[] dist : distance) {
-//             System.out.println(Arrays.toString(dist));
-//         }
-        
-//         for (boolean[] v : visited) {
-//             System.out.println(Arrays.toString(v));
-//         }
-        
-//         list.add(distance[endx][endy]);
-//         for (int i = 0; i < visited.length; i++) {
-//             for (int j = 0; j < visited[0].length; j++) {
-//                 if (!visited[i][j] && distance[i][j] > 0) {
-//                     visited[i][j] = true;
-//                     list.add(1);
-//                 }
-//             }
-//         }
-        
-//         Arrays.sort(result);
-        // return result;
         int[] result = list.stream().mapToInt(Integer::intValue).toArray();
         Arrays.sort(result);
         return result;
@@ -101,8 +78,7 @@ class Solution {
                 
                 visited[nx][ny] = true;
                 totalValue += Integer.parseInt(island[nx][ny]);
-                // distance[nx][ny] = distance[x][y] + Integer.parseInt(island[nx][ny]);
-                // max = Math.max(max, distance[nx][ny]);
+                
                 distance[nx][ny] = totalValue;
                 q.add(new int[]{nx, ny});
                 endx = nx;
@@ -110,17 +86,6 @@ class Solution {
             }
         }
         
-        // list.add(distance[endx][endy]);
-        // for (int i = 0; i < visited.length; i++) {
-        //     for (int j = 0; j < visited[0].length; j++) {
-        //         if (!visited[i][j] && distance[i][j] > 0) {
-        //             visited[i][j] = true;
-        //             list.add(1);
-        //         }
-        //     }
-        // }
-        
-        // return list.stream().mapToInt(Integer::intValue).toArray();
         return distance[endx][endy];
     }
 }
