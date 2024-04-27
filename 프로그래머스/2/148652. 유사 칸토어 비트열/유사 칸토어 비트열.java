@@ -8,6 +8,7 @@ class Solution {
         int num = 0;
         long part = (long) Math.pow(5, n-1);
         for (int i = 0; i < 5; i++) {
+            // 중간 0, 계속 체크, 맨 안 제외 +1
             if (i == 2 || e < idx + part * i || (idx + part * (i+1) -1) < s) continue;
             num += countCantoe(n-1, s, e, idx + part * i);
         }
