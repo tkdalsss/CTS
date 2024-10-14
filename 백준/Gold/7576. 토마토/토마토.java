@@ -10,7 +10,7 @@ public class Main {
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
     static int[][] tomatoMap;
-    static boolean[][] visited;
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -19,7 +19,6 @@ public class Main {
         int days = 0;
 
         tomatoMap = new int[M][N];
-        visited = new boolean[M][N];
         boolean flag = false;
         Queue<int[]> q = new LinkedList<>();
 
