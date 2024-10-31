@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -25,7 +24,8 @@ public class Main {
             }
         }
 
-        for (int i = 0; i <= max; i++) {
+        for (int i = 0; i <= max; i++) { 
+            // 높이 0부터 -> 아무 지역도 잠기지 않을 수도 있다는 조건 고려
             visited = new boolean[N][N];
             cnt_max = Math.max(cnt_max, check_flood(i));
         }
